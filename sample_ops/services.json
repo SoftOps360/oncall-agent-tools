@@ -1,0 +1,6 @@
+{
+  "nginx":    {"status": "running", "replicas_ready": 2, "replicas_desired": 2, "image": "nginx:1.25",        "role": "edge proxy",  "last_event": "none"},
+  "checkout": {"status": "crashed", "replicas_ready": 0, "replicas_desired": 2, "image": "checkout:2.4.1",    "role": "backend api", "last_event": "OOMKilled (exit 137), 4m ago"},
+  "payments": {"status": "running", "replicas_ready": 3, "replicas_desired": 3, "image": "payments:1.9.0",    "role": "backend api", "last_event": "none"},
+  "orders-db":{"status": "running", "replicas_ready": 1, "replicas_desired": 1, "image": "postgres:15",       "role": "database",    "last_event": "none"}
+}

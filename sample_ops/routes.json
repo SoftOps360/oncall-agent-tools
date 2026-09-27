@@ -1,0 +1,5 @@
+{
+  "/": "nginx",
+  "/api/checkout": "checkout",
+  "/api/pay": "payments"
+}

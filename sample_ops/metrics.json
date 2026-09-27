@@ -1,0 +1,6 @@
+{
+  "nginx":    {"cpu_pct": 18, "mem_pct": 22, "error_rate_pct": 68, "p95_ms": 30,  "requests_per_min": 540, "note": "5xx served from upstream failures"},
+  "checkout": {"cpu_pct": 1,  "mem_pct": 2,  "error_rate_pct": 100,"p95_ms": 0,   "requests_per_min": 0,   "note": "no healthy replicas"},
+  "payments": {"cpu_pct": 21, "mem_pct": 40, "error_rate_pct": 0,  "p95_ms": 45,  "requests_per_min": 120, "note": "healthy"},
+  "orders-db":{"cpu_pct": 30, "mem_pct": 55, "error_rate_pct": 0,  "p95_ms": 8,   "connections": 22,       "note": "healthy"}
+}

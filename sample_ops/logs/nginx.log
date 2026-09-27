@@ -1,0 +1,7 @@
+2024/05/01 03:41:02 [info] 811#811: GET / 200
+2024/05/01 03:41:05 [error] 811#811: *4 connect() failed (111: Connection refused) while connecting to upstream, request: "POST /api/checkout HTTP/1.1", upstream: "http://10.0.2.9:8080/api/checkout"
+2024/05/01 03:41:07 [error] 811#811: *7 connect() failed (111: Connection refused) while connecting to upstream, request: "POST /api/checkout HTTP/1.1", upstream: "http://10.0.2.9:8080/api/checkout"
+2024/05/01 03:41:09 [info] 811#811: GET /api/pay 200
+2024/05/01 03:41:11 [error] 811#811: *12 connect() failed (111: Connection refused) while connecting to upstream, request: "POST /api/checkout HTTP/1.1", upstream: "http://10.0.2.9:8080/api/checkout"
+2024/05/01 03:41:13 [error] 811#811: *15 connect() failed (111: Connection refused) while connecting to upstream, request: "GET /api/checkout HTTP/1.1", upstream: "http://10.0.2.9:8080/api/checkout"
+2024/05/01 03:41:15 [info] 811#811: GET / 200

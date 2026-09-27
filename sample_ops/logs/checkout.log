@@ -1,0 +1,10 @@
+2024/05/01 03:40:50 INFO  checkout: starting worker pid=12, loading catalog cache
+2024/05/01 03:40:52 INFO  checkout: POST /api/checkout 200 in 88ms
+2024/05/01 03:40:55 WARN  checkout: memory usage high: 1.85GB / 2.00GB limit
+2024/05/01 03:40:57 WARN  checkout: memory usage high: 1.96GB / 2.00GB limit
+2024/05/01 03:40:58 ERROR checkout: MemoryError while building order batch
+2024/05/01 03:40:58 ERROR checkout: Traceback (most recent call last):
+2024/05/01 03:40:58 ERROR checkout:   File "app/orders.py", line 214, in build_batch
+2024/05/01 03:40:58 ERROR checkout:     rows = [enrich(r) for r in load_all_pending()]
+2024/05/01 03:40:58 ERROR checkout: MemoryError
+2024/05/01 03:40:59 FATAL checkout: worker pid=12 exited; container OOMKilled (exit 137)
