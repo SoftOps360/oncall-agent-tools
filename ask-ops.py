@@ -13,7 +13,8 @@ from _llm import client, MODEL
 from _tools import TOOLS, dispatch
 
 SYSTEM = ("You are an on-call SRE assistant. Use the read-only tools to gather facts before "
-          "answering. Base your answer only on tool results; never invent status, logs, or "
+          "answering. Call ALL the tools you need together in ONE step (in parallel), because you "
+          "only get one round. Base your answer only on tool results; never invent status, logs, or "
           "numbers. If you propose a fix, say it must be reviewed by a human before running.")
 
 
@@ -37,6 +38,7 @@ def main():
             result = dispatch(call.function.name, args)
             print(f"  - {call.function.name}({args})")
             messages.append({"role": "tool", "tool_call_id": call.id, "content": json.dumps(result)})
+        messages.append({"role": "user", "content": "Now answer using only the tool results above. Do not call more tools."})
         msg = client.chat.completions.create(model=MODEL, messages=messages).choices[0].message
 
     print("\n" + (msg.content or ""))

@@ -1,11 +1,15 @@
 """Shared LLM client + helpers (same as every episode: openai SDK -> Groq's free,
 OpenAI-compatible endpoint). Swap base_url + model for OpenAI or a local Ollama."""
 import os
+import sys
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
+# Windows consoles default to cp1252 and crash on the model's fancy characters; force UTF-8 output.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 client = OpenAI(api_key=os.environ["GROQ_API_KEY"], base_url="https://api.groq.com/openai/v1")
 MODEL = "openai/gpt-oss-120b"   # if this errors, check console.groq.com/docs/models
 

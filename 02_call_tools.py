@@ -9,7 +9,8 @@ from _llm import client, MODEL
 from _tools import TOOLS, dispatch
 
 SYSTEM = ("You are an on-call SRE assistant. Use the read-only tools to gather facts before "
-          "answering. Base your answer only on tool results; do not guess. Be concise.")
+          "answering. Call ALL the tools you need together in ONE step (in parallel), because you "
+          "only get one round. Then answer from the results only; do not guess. Be concise.")
 
 
 def run(question):
@@ -32,7 +33,8 @@ def run(question):
         messages.append({"role": "tool", "tool_call_id": call.id,
                          "content": json.dumps(result)})
 
-    # 3) Final answer, now grounded in real tool output.
+    # 3) Final answer, now grounded in real tool output. (One round only - the loop is Ep 12.)
+    messages.append({"role": "user", "content": "Now answer using only the tool results above. Do not call more tools."})
     final = client.chat.completions.create(model=MODEL, messages=messages)
     return final.choices[0].message.content
 
